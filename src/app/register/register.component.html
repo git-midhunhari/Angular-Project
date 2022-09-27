@@ -1,0 +1,55 @@
+<div class="adddiv">
+  <form [formGroup]="registerForm" (ngSubmit)="register(registerForm)">
+    <table>
+      <tr>
+        <td>User Name</td>
+        <td><input type="text" class="form-control" formControlName="uname" required ></td>
+          <span  class="alert" *ngIf="registerForm.get('uname').invalid && (registerForm.get('uname').dirty || registerForm.get('uname').touched)">
+              Username should be a valid email
+            </span>
+      </tr>
+      <tr>
+        <td>Password</td>
+        <td><input type="password" class="form-control" formControlName="password" required min="6"></td>
+        <span  class="alert " *ngIf="registerForm.get('password').invalid && (registerForm.get('password').dirty || registerForm.get('password').touched)">
+              Password should be atleast 6 characters
+            </span>
+      </tr>
+      <tr>
+        <td>Confirm Password</td>
+        <td><input type="password" class="form-control" formControlName="confirmPassword" required min="6"></td>
+         <span  class="alert " *ngIf="registerForm.get('confirmPassword').invalid && (registerForm.get('confirmPassword').dirty || registerForm.get('confirmPassword').touched)">
+              Confirm password should not be empty
+            </span>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <button class="btn btn-primary" [disabled]="registerForm.invalid">Register</button>
+        </td>
+    </table>
+  </form>
+</div>
+
+
+<div class="alert alert success">
+  <table>
+    <tr>
+      <td>
+        Username
+      </td>
+      <td>
+        Password
+      </td>
+    </tr>
+    <tr *ngFor="let user of users">
+      <td>
+        {{user.uname}}
+      </td>
+      <td>
+        {{user.password}}
+      </td>
+    </tr>
+  </table>
+
+</div>
+
